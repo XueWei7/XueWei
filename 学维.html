@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学生权益行动手册｜地区渠道查询</title>
+<style>
+  :root {
+    --green:#123d35; --green2:#1d6a56; --mint:#eaf4ee;
+    --paper:#faf8f1; --ink:#1e302b; --muted:#63746d;
+    --line:#dfe7e1; --white:#fff; --gold:#fff3d8;
+  }
+  * { box-sizing:border-box }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.65 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  .wrap { width:min(1000px,92%); margin:auto }
+  header { background:var(--green); color:white; padding:17px 0 }
+  h1 { font-size:clamp(30px,5vw,46px); line-height:1.15; margin:10px 0 }
+  h2 { font-size:23px; margin:0 0 12px }
+  h3 { margin:0 0 8px; font-size:18px }
+  p { color:var(--muted) }
+  main { padding:30px 0 55px }
+  .eyebrow { color:var(--green2); font-weight:750 }
+  .intro { max-width:760px }
+  .panel {
+    background:var(--white); border:1px solid var(--line);
+    border-radius:17px; padding:21px; margin:18px 0;
+  }
+  .formgrid {
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px; margin-top:16px;
+  }
+  label { display:block; font-weight:700; margin-bottom:6px }
+  input,select {
+    width:100%; padding:11px 12px; border:1px solid #cbd8cf;
+    border-radius:10px; background:white; color:var(--ink); font:inherit;
+  }
+  .btn {
+    display:inline-block; padding:11px 15px; background:var(--green2);
+    color:white; border:0; border-radius:10px; font:inherit;
+    font-weight:750; text-decoration:none; cursor:pointer;
+  }
+  .btn:hover { background:var(--green) }
+  .btn.light { background:white; color:var(--green); border:1px solid var(--line) }
+  .actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:16px }
+  .notice {
+    padding:14px 16px; background:var(--gold);
+    border:1px solid #eadcb8; border-radius:12px; margin:14px 0;
+  }
+  .notice.red { background:#fff0ed; border-color:#f0d1ca }
+  .result { display:none }
+  .result.show { display:block }
+  .routebox {
+    padding:14px 16px; background:var(--mint);
+    border:1px solid #d6e7dc; border-radius:13px; margin:12px 0;
+  }
+  .routebox ol { margin:8px 0 0; padding-left:22px }
+  .routebox li { margin:6px 0 }
+  .contact {
+    display:grid; grid-template-columns:160px 1fr;
+    gap:12px; border-top:1px solid var(--line); padding:13px 0;
+  }
+  .contact:first-child { border-top:0 }
+  .contact strong { color:var(--green) }
+  .small { font-size:13px; color:var(--muted) }
+  a { color:var(--green2); overflow-wrap:anywhere }
+  footer {
+    border-top:1px solid var(--line); padding:23px 0 35px;
+    color:var(--muted); font-size:13px;
+  }
+  @media(max-width:650px) {
+    .formgrid { grid-template-columns:1fr }
+    .contact { grid-template-columns:1fr; gap:2px }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap"><strong>🌱 学生权益行动手册</strong></div>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">按地区和问题，找对应的举报渠道</p>
+  <h1>先选地区，再选问题</h1>
+  <p class="intro">
+    页面优先显示教育主管部门公开的省级渠道，并按问题类型给出建议步骤。
+    省级电话来自教育部2025年公布的规范办学举报渠道；使用前请核对是否仍有效。
+    城市、区县渠道若未收录，会提供查找官方信息的入口，不会猜电话。
+  </p>
+
+  <div class="notice red">
+    <strong>紧急危险：</strong>
+    正在发生暴力、威胁或其他人身危险时，先去安全地点，告诉可信赖的成年人；
+    需要紧急警情处置时拨打110。普通校务投诉不要用110代替教育主管部门渠道。
+  </div>
+
+  <section class="panel">
+    <h2>地区与问题查询</h2>
+    <div class="formgrid">
+      <div>
+        <label for="province">省、自治区、直辖市</label>
+        <select id="province">
+          <option value="">请选择地区</option>
+        </select>
+      </div>
+      <div>
+        <label for="city">市／州／盟（选填）</label>
+        <input id="city" list="cityList" placeholder="例如：南京市、成都市">
+        <datalist id="cityList"></datalist>
+      </div>
+      <div>
+        <label for="district">区／县／旗（选填）</label>
+        <input id="district" placeholder="例如：鼓楼区、武侯区">
+      </div>
+      <div>
+        <label for="issue">问题类型</label>
+        <select id="issue">
+          <option value="general">其他办学管理问题</option>
+          <option value="holiday">违规补课、作息、占用休息时间</option>
+          <option value="fee">违规收费、校园餐、校服或教辅</option>
+          <option value="admission">招生、分班、考试和成绩公开</option>
+          <option value="bullying">校园欺凌、体罚、威胁或伤害</option>
+          <option value="privacy">学生隐私、照片或个人信息被传播</option>
+        </select>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="searchBtn">查找本地区方案</button>
+      <button class="btn light" id="clearBtn">清空</button>
+    </div>
+    <p class="small">地区选择和输入只在当前浏览器中处理，不会提交到服务器。</p>
+  </section>
+
+  <section class="panel result" id="result" aria-live="polite">
+    <h2 id="resultTitle">查询结果</h2>
+    <div id="route"></div>
+    <h3>本地区省级举报渠道</h3>
+    <div id="contact"></div>
+    <div id="localSearch"></div>
+    <div class="notice">
+      <strong>怎么判断有没有推进：</strong>
+      保存提交截图、邮件回执或12345工单号；记下受理单位和日期。
+      跟进时用编号询问是否转办、是否需要补材料、何时反馈。
+      没有答复或未处理核心事实时，带上原编号向上一级教育部门反映。
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>通用提交顺序</h2>
+    <ol>
+      <li><strong>做一页事实摘要：</strong>写清日期、地点、具体行为、影响和希望处理的事项。</li>
+      <li><strong>附证据目录：</strong>列明每份原始材料能证明什么；保留原件，不剪辑、不伪造。</li>
+      <li><strong>先交属地教育局：</strong>使用本页给出的省级渠道，或查找市／区教育部门官方投诉入口。</li>
+      <li><strong>用12345留工单：</strong>说明学校所在地、问题类型和已提交教育部门的情况，记下工单编号。</li>
+      <li><strong>必要时向上级升级：</strong>附上原材料、工单编号及未解决的具体问题，不要只写“没人管”。</li>
+      <li><strong>多人共同反映：</strong>可由家长或经同意的成年人联络；每位学生只陈述亲历事实，不公开学生名单和个人信息。</li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>举报材料模板</h2>
+    <pre id="template">标题：关于[地区][学校]涉嫌[具体问题]的情况反映
+
+受理单位：[属地教育局／教育行政部门]
+
+一、希望核查的问题：
+[用一两句话写明具体做法、时间和涉及范围。]
+
+二、事实经过：
+[按时间顺序写发生了什么；区分亲历事实与转述。]
+
+三、已有材料：
+附件1：[材料名称、日期、能证明什么]
+附件2：[材料名称、日期、能证明什么]
+
+四、此前反映情况：
+[提交日期、受理单位、工单编号及收到的答复。]
+
+五、具体请求：
+1. 请登记并核查上述事项；
+2. 请告知承办单位及是否需要补交材料；
+3. 请反馈对核心事实的核查和处理情况；
+4. 请妥善处理未成年学生身份信息。
+
+反映人：[建议由监护人或经同意的成年人联络]
+提交日期：[日期]</pre>
+    <button class="btn" id="copyBtn">复制模板</button>
+    <span class="small" id="copyStatus" aria-live="polite"></span>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    此网页是信息与材料工具，不代替主管部门调查，也不承诺案件结果。
+    页面没有举报提交功能，不收集学生的姓名、学校、电话或证据。
+    省级渠道清单按教育部2025年公开信息整理，正式使用前应到当地政府或教育部门官网核实最新信息。
+  </div>
+</footer>
+
+<script>
+const regions = [
+  {name:"北京", phone:"010-12345"},
+  {name:"天津", phone:"022-83215060", email:"sjwjyzh@tj.gov.cn"},
+  {name:"河北", email:"wgbkjbyx@163.com"},
+  {name:"山西", phone:"0351-3806835；0351-3046533（双休日、法定节假日）", web:"http://jyt.shanxi.gov.cn/"},
+  {name:"内蒙古", phone:"未列电话", email:"jytjjcyq@126.com", web:"https://xmtb.nmgov.edu.cn/dzzjz/enrollment/info/add"},
+  {name:"辽宁", phone:"024-86891848", email:"lnsjygfb@163.com"},
+  {name:"吉林", phone:"0431-89968323", email:"jlsxwjgc@163.com"},
+  {name:"黑龙江", phone:"0451-53621738", email:"jytjjc1@163.com"},
+  {name:"上海", phone:"021-962066-9", web:"https://basic.sh.smartedu.cn/tsjb"},
+  {name:"江苏", phone:"025-83335604", email:"jsgfbx@163.com"},
+  {name:"浙江", phone:"0571-88008823（工作时间）；0571-88008703（双休日、法定节假日）", email:"jjc@zjedu.gov.cn", web:"https://jyt.zj.gov.cn/"},
+  {name:"安徽", phone:"0551-12345", email:"jjc@ahedu.gov.cn"},
+  {name:"福建", phone:"0591-87091371；0591-87822232（双休日、法定节假日）", email:"fjsgfbx@fjsjyt.cn", web:"http://jyt.fujian.gov.cn/ztzl/gfzxxbxxw"},
+  {name:"江西", phone:"0791-86765130（工作时间）；96365", email:"wgbk@jxedu.gov.cn"},
+  {name:"山东", phone:"0531-82924403", email:"zxgl@shandong.cn"},
+  {name:"河南", phone:"0371-69691083（工作时间）；13069389321", email:"wgbk@jyt.henan.gov.cn"},
+  {name:"湖北", phone:"027-87328126", email:"hbgfbx@163.com"},
+  {name:"湖南", phone:"0731-82204148", email:"a5174148@163.com", web:"https://fuwu.jyt.hunan.gov.cn/"},
+  {name:"广东", phone:"020-37628803", web:"https://edu.gd.gov.cn/ztzlnew/gfbx"},
+  {name:"广西", phone:"0771-5815802；5815000（双休日、法定节假日）", email:"gfgl@jyt.gxzf.gov.cn", web:"http://jyt.gxzf.gov.cn/zfxxgk/fdzdgknr/tzgg_58179/t19715383.shtml"},
+  {name:"海南", phone:"0898-65230370", email:"65230825@163.com"},
+  {name:"重庆", phone:"023-67656197；023-67780729", web:"https://jcjy.cqedu.cn/app/cqsrxyjs/index.html#/complain/complain_index"},
+  {name:"四川", phone:"028-86113375", email:"scgfbx@163.com"},
+  {name:"贵州", phone:"0851-85284911", email:"gzsjytjjc@163.com", web:"https://jyt.guizhou.gov.cn/"},
+  {name:"云南", phone:"未列电话", web:"https://jyt.yn.gov.cn/article/2147451527"},
+  {name:"西藏", phone:"0891-6599518", email:"edts8500@163.com"},
+  {name:"陕西", phone:"029-88668852；029-88668870", email:"sxgzgfbx@126.com；sxjcjygfn_2024@163.com"},
+  {name:"甘肃", phone:"0931-8283115", email:"jijiao@gsedu.cn"},
+  {name:"青海", phone:"0971-6310023", email:"qhjyzxz@163.com", web:"https://jyt.qinghai.gov.cn/gk/tzgg/idoc.html?namepid=2093"},
+  {name:"宁夏", phone:"未列电话", web:"https://qo5iem.aliwork.com/o/gfzxxbxxwtsjbpt"},
+  {name:"新疆", phone:"0991-7606284（工作时间）；0991-7606114（双休日、法定节假日）", web:"https://jyt.xinjiang.gov.cn/edu/xjlb/hd_mailbox.shtml"},
+  {name:"新疆生产建设兵团", phone:"0991-2896287；0991-2896289", email:"btjyjts@163.com"}
+];
+
+const issuePlans = {
+  general: {
+    title:"一般办学管理／学生权益问题",
+    steps:[
+      "先向学校所在地县／区教育局提交书面情况反映；校方本身涉事时，不要只走校内渠道。",
+      "拨12345要求转属地教育主管部门，记下工单编号、承办单位和查询方式。",
+      "若未核查关键事实，带原材料和工单编号向市级、省级教育部门升级反映。"
+    ]
+  },
+  holiday: {
+    title:"违规补课、作息或占用休息时间",
+    steps:[
+      "整理具体日期、实际上课安排、通知或校历等材料；区分自愿活动与学校统一安排。",
+      "投属地教育局的规范办学举报渠道，并说明涉及的年级、时间段和具体安排。",
+      "通过12345取得工单记录；未处理时向上一级教育部门提交原工单和补充证据。"
+    ]
+  },
+  fee: {
+    title:"收费、校园餐、校服或教辅问题",
+    steps:[
+      "整理收费通知、收费项目、金额、缴费凭证、收款主体和相关沟通记录。",
+      "先向属地教育局反映学校管理和办学事项；同时通过12345请求转相关主管部门核查。",
+      "若问题涉及商品、合同或经营主体，可向12345说明具体对象，请其按职责转办；不要假定所有收费事项都由同一部门处理。"
+    ]
+  },
+  admission: {
+    title:"招生、分班、考试或成绩公开问题",
+    steps:[
+      "保存招生简章、录取通知、分班方案、考试通知、成绩公开截图等原始材料。",
+      "向县／区教育行政部门的招生入学或基础教育管理部门反映；询问当地专门招生热线。",
+      "2026年中小学违规招生专栏属于阶段性专项渠道，使用前要核实当前是否仍开放；不要用过期专栏代替属地渠道。"
+    ]
+  },
+  bullying: {
+    title:"校园欺凌、体罚、威胁或伤害",
+    steps:[
+      "先保证学生安全；有即时危险时联系可信赖成年人，紧急警情拨110；有伤情及时就医。",
+      "记录每次事件的日期、地点、经过、证人和学校获知后的处理，保存已有材料。",
+      "由监护人向学校及属地教育局提出具体保护请求；如果举报后出现新的威胁或不利对待，单独记录并关联原工单再次反映。"
+    ]
+  },
+  privacy: {
+    title:"学生隐私或个人信息被传播",
+    steps:[
+      "不要转发或公开对方个人信息；记录发布平台、时间、链接等必要线索。",
+      "请监护人协助通过平台正规渠道申请处理，并向学校和属地教育局反映。",
+      "若伴随威胁、勒索或人身危险，优先寻求成年人帮助和紧急处置；不要自行组织网暴或人肉搜索。"
+    ]
+  }
+};
+
+const $ = id => document.getElementById(id);
+const provinceSelect = $("province");
+
+regions.forEach(region => {
+  const option = document.createElement("option");
+  option.value = region.name;
+  option.textContent = region.name;
+  provinceSelect.appendChild(option);
+});
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[ch]);
+}
+
+function renderContact(region) {
+  const rows = [];
+  if (region.phone) rows.push(
+    `<div class="contact"><strong>举报电话</strong><div>${escapeHTML(region.phone)}</div></div>`
+  );
+  if (region.email) {
+    const emails = region.email.split("；").map(x => x.trim());
+    rows.push(`<div class="contact"><strong>电子邮箱</strong><div>${
+      emails.map(e => `<a href="mailto:${encodeURIComponent(e)}">${escapeHTML(e)}</a>`).join("<br>")
+    }</div></div>`);
+  }
+  if (region.web) rows.push(
+    `<div class="contact"><strong>举报网站／页面</strong><div><a href="${escapeHTML(region.web)}" target="_blank" rel="noopener">打开该省公开渠道</a></div></div>`
+  );
+  if (!rows.length) rows.push(
+    `<div class="contact"><strong>公开渠道</strong><div>这份省级名单未列出电话、邮箱或网站，请使用下方官方查询入口。</div></div>`
+  );
+  return rows.join("");
+}
+
+function showResult() {
+  const province = $("province").value;
+  const city = $("city").value.trim();
+  const district = $("district").value.trim();
+  const issue = $("issue").value;
+  const region = regions.find(r => r.name === province);
+  if (!region) {
+    alert("请先选择省、自治区、直辖市。");
+    return;
+  }
+
+  const plan = issuePlans[issue];
+  const place = [province, city, district].filter(Boolean).join(" · ");
+  $("resultTitle").textContent = `${place}｜${plan.title}`;
+  $("route").innerHTML =
+    `<div class="routebox"><strong>建议办理顺序（按职责推荐，不代表成功率承诺）</strong><ol>${
+      plan.steps.map(s => `<li>${escapeHTML(s)}</li>`).join("")
+    }</ol></div>
+    <div class="routebox"><strong>配套留痕</strong>
+      <ol>
+        <li>提交书面材料时保存提交截图、邮件回执或平台编号。</li>
+        <li>拨12345时说明属地和问题类型，要求转教育主管部门并记下工单号。</li>
+        <li>若属地未处理核心事实，向上一级教育部门提交原编号及未解决事项。</li>
+      </ol>
+    </div>`;
+  $("contact").innerHTML = renderContact(region);
+
+  const searchText = `${province} ${city} ${district} 教育局 规范办学 举报 投诉 官方网站`;
+  const searchUrl = "https://www.baidu.com/s?wd=" + encodeURIComponent(searchText);
+  const searchArea = city || district
+    ? `${city}${district ? " " + district : ""}的市／区县级专门渠道未在本页省级名单中核验。`
+    : "可输入市／区县名称，查找当地教育部门公开的专门渠道。";
+  $("localSearch").innerHTML =
+    `<div class="routebox"><strong>市／区县级渠道</strong><p>${escapeHTML(searchArea)}
+    优先打开政府或教育局官网核对电话、受理范围和工作时间；不要只凭搜索结果摘要拨号。</p>
+    <a class="btn light" href="${searchUrl}" target="_blank" rel="noopener">搜索当地官方渠道</a>
+    <p class="small">搜索词：${escapeHTML(searchText)}</p></div>`;
+
+  $("result").classList.add("show");
+  $("result").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+$("searchBtn").addEventListener("click", showResult);
+$("clearBtn").addEventListener("click", () => {
+  $("province").value = "";
+  $("city").value = "";
+  $("district").value = "";
+  $("issue").value = "general";
+  $("result").classList.remove("show");
+});
+$("copyBtn").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText($("template").innerText);
+    $("copyStatus").textContent = "已复制模板。请在本地编辑，不要把未成年人敏感信息发到公开网页。";
+  } catch {
+    $("copyStatus").textContent = "自动复制失败，请手动选择模板复制。";
+  }
+});
+</script>
+</body>
+</html>
